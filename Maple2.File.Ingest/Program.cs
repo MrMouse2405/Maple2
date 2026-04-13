@@ -112,6 +112,7 @@ if (dropData || schemaChanged) {
 Console.WriteLine("Ensuring metadata database is created...");
 metadataContext.Database.EnsureCreated();
 metadataContext.Database.ExecuteSqlRaw(@"SET GLOBAL max_allowed_packet=268435456"); // 256MB
+metadataContext.Database.ExecuteSqlRaw(@"SET GLOBAL check_constraint_checks=OFF"); // bypass MariaDB JSON_VALID() check during ingest
 
 // Store schema version after creation
 SchemaVersionManager.StoreSchemaVersion(metadataContext);

@@ -48,6 +48,21 @@ public record AiMetadata(
     [JsonDerivedType(typeof(RemoveMeNode), typeDiscriminator: nameof(RemoveMeNode))]
     [JsonDerivedType(typeof(SuicideNode), typeDiscriminator: nameof(SuicideNode))]
     [JsonDerivedType(typeof(AiPresetDefinition), typeDiscriminator: nameof(AiPresetDefinition))]
+    // Condition subtypes must also be registered here because Condition extends Node extends Entry,
+    // and Condition instances appear inside Entry[] arrays (e.g. Node.Entries).
+    [JsonDerivedType(typeof(Condition), typeDiscriminator: nameof(Condition))]
+    [JsonDerivedType(typeof(DistanceOverCondition), typeDiscriminator: nameof(DistanceOverCondition))]
+    [JsonDerivedType(typeof(CombatTimeCondition), typeDiscriminator: nameof(CombatTimeCondition))]
+    [JsonDerivedType(typeof(DistanceLessCondition), typeDiscriminator: nameof(DistanceLessCondition))]
+    [JsonDerivedType(typeof(SkillRangeCondition), typeDiscriminator: nameof(SkillRangeCondition))]
+    [JsonDerivedType(typeof(ExtraDataCondition), typeDiscriminator: nameof(ExtraDataCondition))]
+    [JsonDerivedType(typeof(SlaveCountCondition), typeDiscriminator: nameof(SlaveCountCondition))]
+    [JsonDerivedType(typeof(HpOverCondition), typeDiscriminator: nameof(HpOverCondition))]
+    [JsonDerivedType(typeof(StateCondition), typeDiscriminator: nameof(StateCondition))]
+    [JsonDerivedType(typeof(AdditionalCondition), typeDiscriminator: nameof(AdditionalCondition))]
+    [JsonDerivedType(typeof(HpLessCondition), typeDiscriminator: nameof(HpLessCondition))]
+    [JsonDerivedType(typeof(SlaveCountOpCondition), typeDiscriminator: nameof(SlaveCountOpCondition))]
+    [JsonDerivedType(typeof(TrueCondition), typeDiscriminator: nameof(TrueCondition))]
     public record Entry(
         string Name);
 
